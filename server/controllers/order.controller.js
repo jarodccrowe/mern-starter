@@ -24,7 +24,7 @@ export function getOrders(req, res) {
  * @param res
  * @returns void
  */
-export function addOrders(req, res) {
+export function addOrder(req, res) {
   if (!req.body.order.name || !req.body.order.title || !req.body.order.content) {
     res.status(403).end();
   }

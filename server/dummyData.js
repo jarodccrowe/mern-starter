@@ -78,10 +78,10 @@ export default function () {
       qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
       ipsum quia dolor sit amet.`;
 
-    const order1 = new Order({ name: 'Admin', title: 'Hello MERN', slug: 'hello-mern', cuid: 'cikqgkv4q01ck7453ualdn3hd', content: content1 });
-    const order2 = new Order({ name: 'Admin', title: 'Lorem Ipsum', slug: 'lorem-ipsum', cuid: 'cikqgkv4q01ck7453ualdn3hf', content: content2 });
+    const order1 = new Order({ name: 'Admin', title: 'Hello MERN', slug: 'hello-mern', cuid: 'cikqgkv4q01ck7453ualdn3he', content: content1 });
+    const order2 = new Order({ name: 'Admin', title: 'Lorem Ipsum', slug: 'lorem-ipsum', cuid: 'cikqgkv4q01ck7453ualdn3hh', content: content2 });
 
-    Post.create([order1, order2], (error) => {
+    Order.create([order1, order2], (error) => {
       if (!error) {
         // console.log('ready to go....');
       }
