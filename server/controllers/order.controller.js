@@ -4,17 +4,17 @@ import slug from 'limax';
 import sanitizeHtml from 'sanitize-html';
 
 /**
- * Get all posts
+ * Get all orders
  * @param req
  * @param res
  * @returns void
  */
 export function getOrders(req, res) {
-  Order.find().sort('-dateAdded').exec((err, posts) => {
+  Order.find().sort('-dateAdded').exec((err, orders) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ posts });
+    res.json({ orders });
   });
 }
 
@@ -25,11 +25,11 @@ export function getOrders(req, res) {
  * @returns void
  */
 export function addOrders(req, res) {
-  if (!req.body.post.name || !req.body.post.title || !req.body.post.content) {
+  if (!req.body.order.name || !req.body.order.title || !req.body.order.content) {
     res.status(403).end();
   }
 
-  const newOrder = new Order(req.body.post);
+  const newOrder = new Order(req.body.order);
 
   // Let's sanitize inputs
   newOrder.title = sanitizeHtml(newOrder.title);
@@ -42,7 +42,7 @@ export function addOrders(req, res) {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ post: saved });
+    res.json({ order: saved });
   });
 }
 
@@ -53,11 +53,11 @@ export function addOrders(req, res) {
  * @returns void
  */
 export function getOrder(req, res) {
-  Order.findOne({ cuid: req.params.cuid }).exec((err, post) => {
+  Order.findOne({ cuid: req.params.cuid }).exec((err, order) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ post });
+    res.json({ order });
   });
 }
 
@@ -68,12 +68,12 @@ export function getOrder(req, res) {
  * @returns void
  */
 export function deleteOrder(req, res) {
-  Order.findOne({ cuid: req.params.cuid }).exec((err, post) => {
+  Order.findOne({ cuid: req.params.cuid }).exec((err, order) => {
     if (err) {
       res.status(500).send(err);
     }
 
-    post.remove(() => {
+    order.remove(() => {
       res.status(200).end();
     });
   });
