@@ -4,8 +4,8 @@ import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 // Import Style
 import styles from './OrderCreateWidget.css';
 
-export class PostCreateWidget extends Component {
-  addPost = () => {
+export class OrderCreateWidget extends Component {
+  addOrder = () => {
     const nameRef = this.refs.name;
     const titleRef = this.refs.title;
     const contentRef = this.refs.content;
@@ -16,7 +16,7 @@ export class PostCreateWidget extends Component {
   };
 
   render() {
-    const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
+    const cls = `${styles.form} ${(this.props.showAddOrder ? styles.appear : '')}`;
     return (
       <div className={cls}>
         <div className={styles['form-content']}>
@@ -31,10 +31,10 @@ export class PostCreateWidget extends Component {
   }
 }
 
-PostCreateWidget.propTypes = {
+OrderCreateWidget.propTypes = {
   addOrder: PropTypes.func.isRequired,
-  showAddPost: PropTypes.bool.isRequired,
+  showAddOrder: PropTypes.bool.isRequired,
   intl: intlShape.isRequired,
 };
 
-export default injectIntl(PostCreateWidget);
+export default injectIntl(OrderCreateWidget);

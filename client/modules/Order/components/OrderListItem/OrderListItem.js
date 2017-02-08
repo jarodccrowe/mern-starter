@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 // Import Style
 import styles from './OrderListItem.css';
 
-function PostListItem(props) {
+function OrderListItem(props) {
   return (
     <div className={styles['single-order']}>
       <h3 className={styles['order-title']}>
@@ -15,13 +15,13 @@ function PostListItem(props) {
       </h3>
       <p className={styles['author-name']}><FormattedMessage id="by" /> {props.order.name}</p>
       <p className={styles['order-desc']}>{props.order.content}</p>
-      <p className={styles['order-action']}><a href="#" onClick={props.onDelete}><FormattedMessage id="deletePost" /></a></p>
+      <p className={styles['order-action']}><a href="#" onClick={props.onDelete}><FormattedMessage id="deleteOrder" /></a></p>
       <hr className={styles.divider} />
     </div>
   );
 }
 
-PostListItem.propTypes = {
+OrderListItem.propTypes = {
   order: PropTypes.shape({
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -32,4 +32,4 @@ PostListItem.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
-export default PostListItem;
+export default OrderListItem;

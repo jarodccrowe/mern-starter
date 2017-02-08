@@ -7,7 +7,7 @@ function OrderList(props) {
   return (
     <div className="listView">
       {
-        props.order.map(order => (
+        props.orders.map(order => (
           <OrderListItem
             order={order}
             key={order.cuid}

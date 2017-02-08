@@ -56,8 +56,7 @@ app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
-app.use('/api', posts);
-app.use('/api', orders);
+app.use('/api', posts, orders);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -144,7 +143,7 @@ app.use((req, res, next) => {
 // start app
 app.listen(serverConfig.port, (error) => {
   if (!error) {
-    console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
+    console.log(`MERN is running on port: ${serverConfig.port}`); // eslint-disable-line
   }
 });
 
