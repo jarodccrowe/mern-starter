@@ -15,7 +15,7 @@ export function addOrder(order) {
 
 export function addOrderRequest(order) {
   return (dispatch) => {
-    return callApi('orders', 'order', {
+    return callApi('orders', 'post', {
       order: {
         name: order.name,
         title: order.title,
