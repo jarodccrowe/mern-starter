@@ -92,7 +92,7 @@ export class OrderCreateWidget extends Component {
           <p><small>The following amounts of seleted glasses are available:</small></p>
           <div className="card text-primary" style={{ padding: '1rem 1rem 0.3rem 1rem', marginBottom: '1rem' }}>
             {glass1 === false && glass2 === false && glass3 === false && <p className="text-muted">No Glass Types Selected</p>}
-            {pickupDate && pickupDate.value === '' && <p className="text-muted">No Glass Types Selected</p>}
+            {pickupDate && pickupDate.value === '' && <p className="text-muted">No Dates Selected</p>}
             {pickupDate && pickupDate.value !== '' &&
               <div>
                 {showGlass1 && <p>Glass 1: {Math.floor(Math.random() * 900 + 10)}</p>}
@@ -124,7 +124,6 @@ export class OrderCreateWidget extends Component {
               </div>
             }
           </div>
-          <div className="text-success card p-2 mb-2">Discount: {Math.floor(Math.random() * 10)}%</div>
           <label>Customer Name</label>
           <input className={styles['form-field']} ref="customerName" />
           <label>Address</label>
@@ -135,6 +134,7 @@ export class OrderCreateWidget extends Component {
           <textarea placeholder={this.props.intl.messages.comments} className={styles['form-field']} ref="comments" />
           <a className={styles['order-submit-button']} href="#" onClick={this.addOrder}><FormattedMessage id="submit" /></a>
         </div>
+        <div className="card p-3" style={{ position: 'fixed', top: '250px', background: 'light-grey', height: '100px', width: '130px' }}>Discount: {Math.floor(Math.random() * 10)}%</div>
       </div>
     );
   }
