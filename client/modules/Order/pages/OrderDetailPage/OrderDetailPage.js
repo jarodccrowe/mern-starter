@@ -18,7 +18,7 @@ export function OrderDetailPage(props) {
       <Helmet title={props.order.title} />
       <div className={`${styles['single-order']} ${styles['order-detail']}`}>
         <h3 className={styles['order-title']}>{props.order.title}</h3>
-        <p className={styles['author-name']}><FormattedMessage id="by" /> {props.order.name}</p>
+        <p className={styles['author-name']}><FormattedMessage id="by" />{props.order.name}</p>
         <p className={styles['order-desc']}>{props.order.content}</p>
       </div>
     </div>
