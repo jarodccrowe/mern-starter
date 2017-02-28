@@ -1,7 +1,7 @@
 export default {
   locale: 'en',
   messages: {
-    siteTitle: 'VC PoC',
+    siteTitle: 'Glass',
     address: 'Address',
     addPost: 'Add Post',
     addOrder: 'Add Order',
