@@ -1,6 +1,22 @@
 import Post from './models/post';
+import GlassType from './models/glassType';
 
 export default function () {
+  GlassType.count().exec((err, count) => {
+    if (count > 0) {
+      return;
+    }
+
+    const glassType1 = new GlassType({ name: 'Glass Type 1', slug: 'glass-type-1', cuid: 'cikqgkv4q01ck8453ualdn3hd', content: 'drink from it' });
+    const glassType2 = new GlassType({ name: 'Glass Type 2', slug: 'glass-type-1', cuid: 'cikqgkv4q01ck8453ualdn3hf', content: 'drink from it' });
+
+    GlassType.create([glassType1, glassType2], (error) => {
+      if (!error) {
+        // console.log('ready to go....');
+      }
+    });
+  });
+
   Post.count().exec((err, count) => {
     if (count > 0) {
       return;

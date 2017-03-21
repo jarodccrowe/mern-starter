@@ -1,7 +1,7 @@
 export default {
   locale: 'en',
   messages: {
-    siteTitle: 'Glass',
+    siteTitle: 'Sandbox',
     address: 'Address',
     addPost: 'Add Post',
     addOrder: 'Add Order',

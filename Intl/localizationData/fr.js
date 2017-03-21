@@ -1,7 +1,7 @@
 export default {
   locale: 'fr',
   messages: {
-    siteTitle: 'VC PoC',
+    siteTitle: 'Sandbox',
     address: 'Address',
     addPost: 'Ajouter Poster',
     addOrder: 'Add Order',
