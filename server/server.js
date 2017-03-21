@@ -34,6 +34,7 @@ import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import orders from './routes/order.routes';
+import glassType from './routes/glassType.routes';
 import dummyData from './dummyData';
 import serverConfig from './config';
 
@@ -56,7 +57,7 @@ app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
-app.use('/api', posts, orders);
+app.use('/api', posts, orders, glassType);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {

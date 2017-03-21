@@ -7,15 +7,18 @@ import OrderCreateWidget from '../../components/OrderCreateWidget/OrderCreateWid
 
 // Import Actions
 import { addOrderRequest, fetchOrders, deleteOrderRequest } from '../../OrderActions';
+import { fetchGlassTypes } from '../../../Glassware/GlasswareActions';
 import { toggleAddOrder } from '../../../App/AppActions';
 
 // Import Selectors
 import { getShowAddOrder } from '../../../App/AppReducer';
 import { getOrders } from '../../OrderReducer';
+import { getGlassTypes } from '../../../Glassware/GlasswareReducer';
 
 class OrderListPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchOrders());
+    this.props.dispatch(fetchGlassTypes());
   }
 
   handleDeleteOrder = order => {
@@ -32,7 +35,7 @@ class OrderListPage extends Component {
   render() {
     return (
       <div>
-        <OrderCreateWidget addOrder={this.handleAddOrder} showAddOrder={this.props.showAddOrder} />
+        <OrderCreateWidget addOrder={this.handleAddOrder} showAddOrder={this.props.showAddOrder} glassTypes={this.props.glassTypes} />
         <OrderList handleDeleteOrder={this.handleDeleteOrder} orders={this.props.orders} />
       </div>
     );
@@ -41,12 +44,14 @@ class OrderListPage extends Component {
 
 // Actions required to provide data for this component to render in sever side.
 OrderListPage.need = [() => { return fetchOrders(); }];
+OrderListPage.need = [() => { return fetchGlassTypes(); }];
 
 // Retrieve data from store as props
 function mapStateToProps(state) {
   return {
     showAddOrder: getShowAddOrder(state),
     orders: getOrders(state),
+    glassTypes: getGlassTypes(state),
   };
 }
 
@@ -56,6 +61,7 @@ OrderListPage.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
   })).isRequired,
+  glassTypes: PropTypes.object.isRequired,
   showAddOrder: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
 };

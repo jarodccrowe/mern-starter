@@ -144,6 +144,7 @@ OrderCreateWidget.propTypes = {
   addOrder: PropTypes.func.isRequired,
   showAddOrder: PropTypes.bool.isRequired,
   intl: intlShape.isRequired,
+  glassTypes: PropTypes.object.isRequired,
 };
 
 export default injectIntl(OrderCreateWidget);
