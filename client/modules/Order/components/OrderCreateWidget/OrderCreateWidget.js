@@ -45,28 +45,25 @@ export class OrderCreateWidget extends Component {
     }
   };
 
+  renderGlassType() {
+    return (
+      <button type="button" className="btn">
+        <img src="https://www.plumm.com/globalassets/productassets/pluh3310a/plumm-large/pluh3310a_3_plumm-large.jpg" width="160" alt="glass1" />
+      </button>
+    );
+  }
+
   render() {
     const cls = `${styles.form} ${(this.props.showAddOrder ? styles.appear : '')}`;
 
 
     const { glass1, glass2, glass3 } = this.state;
-    const { deliveryDate, pickupDate } = this.refs;
+    const { pickupDate } = this.refs;
 
-    const addGlass1 = () => {
-      this.setState({ glass1: !this.state.glass1 });
-    };
-    const addGlass2 = () => {
-      this.setState({ glass2: !this.state.glass2 });
-    };
-    const addGlass3 = () => {
-      this.setState({ glass3: !this.state.glass3 });
-    };
 
     const showGlass1 = this.state.glass1 === true;
     const showGlass2 = this.state.glass2 === true;
     const showGlass3 = this.state.glass3 === true;
-
-    console.log(this.refs);
 
     return (
       <div className={cls}>
@@ -74,15 +71,7 @@ export class OrderCreateWidget extends Component {
           <h2 className={styles['form-title']}><FormattedMessage id="createNewOrder" /></h2>
           <label>Select Glasses</label>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-            <button type="button" className={classNames('btn', { 'btn-primary': this.state.glass1 })} onClick={addGlass1}>
-              <img src="https://www.plumm.com/globalassets/productassets/pluh3310a/plumm-large/pluh3310a_3_plumm-large.jpg" width="160" alt="glass1" />
-            </button>
-            <button type="button" className={classNames('btn', { 'btn-primary': this.state.glass2 })} onClick={addGlass2}>
-              <img src="https://www.plumm.com/globalassets/productassets/pluh3310b/plumm-large/pluh3310b_3_plumm-large.jpg" width="160" alt="glass1" />
-            </button>
-            <button type="button" className={classNames('btn', { 'btn-primary': this.state.glass3 })} onClick={addGlass3}>
-              <img src="https://www.plumm.com/globalassets/productassets/pluo6660rw/plumm-large/pluo6660rw_3_plumm-large.jpg" width="160" alt="glass1" />
-            </button>
+            {this.props.glassTypes && this.props.glassTypes.map(this.renderGlassType)}
           </div>
           <label>{this.props.intl.messages.deliveryDate}</label>
           <input type="date" className={styles['form-field']} ref="deliveryDate" />
@@ -144,7 +133,7 @@ OrderCreateWidget.propTypes = {
   addOrder: PropTypes.func.isRequired,
   showAddOrder: PropTypes.bool.isRequired,
   intl: intlShape.isRequired,
-  glassTypes: PropTypes.object.isRequired,
+  glassTypes: PropTypes.array.isRequired,
 };
 
 export default injectIntl(OrderCreateWidget);

@@ -8,7 +8,7 @@ const GlassWareReducer = (state = initialState, action) => {
 
     case ADD_GLASS_TYPES :
       return {
-        data: action.glasstypes,
+        data: action.glassTypes,
       };
 
     default:
@@ -19,7 +19,7 @@ const GlassWareReducer = (state = initialState, action) => {
 /* Selectors */
 
 // Get all glass types
-export const getGlassTypes = state => state.glasstypes.data;
+export const getGlassTypes = state => state.glassTypes.data;
 
 // Export Reducer
 export default GlassWareReducer;

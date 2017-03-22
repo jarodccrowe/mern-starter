@@ -6,7 +6,7 @@ import { combineReducers } from 'redux';
 // Import Reducers
 import app from './modules/App/AppReducer';
 import posts from './modules/Post/PostReducer';
-import glasstypes from './modules/Glassware/GlasswareReducer';
+import glassTypes from './modules/Glassware/GlasswareReducer';
 import orders from './modules/Order/OrderReducer';
 import intl from './modules/Intl/IntlReducer';
 
@@ -14,7 +14,7 @@ import intl from './modules/Intl/IntlReducer';
 export default combineReducers({
   app,
   posts,
-  glasstypes,
+  glassTypes,
   orders,
   intl,
 });

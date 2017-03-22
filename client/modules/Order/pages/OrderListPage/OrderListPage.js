@@ -61,7 +61,7 @@ OrderListPage.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
   })).isRequired,
-  glassTypes: PropTypes.object.isRequired,
+  glassTypes: PropTypes.array.isRequired,
   showAddOrder: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
