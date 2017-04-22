@@ -8,11 +8,13 @@ export default function () {
     }
 
     const glassType1 = new GlassType({ name: 'Glass Type 1', src: 'https://www.plumm.com/globalassets/productassets/pluo6660rw/plumm-large/pluo6660rw_3_plumm-large.jpg',
-     slug: 'glass-type-1', cuid: 'cikqgkv4q01ck8453ualdn3hd', content: 'drink from it' });
-    const glassType2 = new GlassType({ name: 'Glass Type 2', src: 'https://www.plumm.com/globalassets/productassets/pluo6660rw/plumm-large/pluo6660rw_3_plumm-large.jpg',
-      slug: 'glass-type-1', cuid: 'cikqgkv4q01ck8453ualdn3hf', content: 'drink from it' });
+     slug: 'glass-type-1', cuid: 'cikqgkv4q01ck8453ualdn3hd', content: 'Drink from it' });
+    const glassType2 = new GlassType({ name: 'Glass Type 2', src: 'http://barlens.com.au/wp-content/uploads/2015/12/CA0075003-_Wine-Glass-Breeze-350ml.jpg',
+      slug: 'glass-type-2', cuid: 'cikqgkv4q01ck8453ualdn3hf', content: 'Drink from it' });
+    const glassType3 = new GlassType({ name: 'Glass Type 3', src: 'http://barlens.com.au/wp-content/uploads/2015/12/CA0075003-_Wine-Glass-Breeze-350ml.jpg',
+      slug: 'glass-type-3', cuid: 'cikqgkv4q01ck8453ualdn3hf', content: 'Drink from it' });
 
-    GlassType.create([glassType1, glassType2], (error) => {
+    GlassType.create([glassType1, glassType2, glassType3], (error) => {
       if (!error) {
         // console.log('ready to go....');
       }
