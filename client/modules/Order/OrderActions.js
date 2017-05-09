@@ -58,3 +58,16 @@ export function deleteOrderRequest(cuid) {
     return callApi(`orders/${cuid}`, 'delete').then(() => dispatch(deleteOrder(cuid)));
   };
 }
+
+export function checkAvailability(payload) {
+  console.log(payload);
+  return (dispatch) => {
+    return callApi('orders/availability', 'put', {
+      order: {
+        glasses: payload.glasses,
+        date1: payload.date1,
+        date2: payload.date2,
+      },
+    }).then(res => dispatch(addOrder(res.order)));
+  };
+}

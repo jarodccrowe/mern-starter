@@ -47,6 +47,37 @@ export function addOrder(req, res) {
 }
 
 /**
+ * Check an order
+ * @param req
+ * @param res
+ * @returns void
+ */
+
+export function checkAvailability(req, res) {
+  if (!req.body.order.glasses || !req.body.order.date1 || !req.body.order.date2) {
+    res.status(403).end();
+  }
+
+  const someFunction = () => {
+    const availability = {
+      1: 20,
+      2: 30,
+      3: 40,
+    };
+
+    return availability;
+  };
+
+  // to test just send back an array first
+  // get all current orders => which have date1 date2 and glass id array {fake this at the moment}
+  // filter down to all current orders that pass the algorithm
+  // total values against ids
+  // get entire inventory stock => glass ids with an amount {fake this at the moment}
+
+  res.json(someFunction());
+}
+
+/**
  * Get a single order
  * @param req
  * @param res

@@ -9,97 +9,72 @@ export class OrderCreateWidget extends Component {
     super();
 
     this.state = {
-      selectedGlassTypes: [],
+      selectedGlasses: [],
     };
   }
-
 
   addOrder = () => {
     const customerNameRef = this.refs.customerName;
     const deliveryDate = this.refs.deliveryDate;
     const pickupDate = this.refs.pickupDate;
-    const address = this.refs.address;
-    const invoiceUseDays = this.refs.invoiceUseDays;
-    const comments = this.refs.comments;
+    const glasses = this.refs.glasses;
 
     if (
       customerNameRef.value &&
       deliveryDate.value &&
       pickupDate.value &&
-      address.value &&
-      invoiceUseDays.value &&
-      comments.value
+      glasses.value
     ) {
       this.props.addOrder(
         customerNameRef.value,
         deliveryDate.value,
         pickupDate.value,
-        address.value,
-        invoiceUseDays.value,
-        comments.value,
+        glasses.value,
       );
-      customerNameRef.value = address.value = comments.value = '';
+      customerNameRef.value = '';
     }
   };
 
-  renderGlassType(glass) {
-    onClick = () => {
-      const newState = this.state.selectedGlassTypes.slice();
-      newState.push(glass);
-      this.setState({newState});
-    }
-
-    return (
-      <button type="button" className="btn" onClick={onClick}>
-        <p><small>{glass.name}</small></p>
-        <img src={glass.src} width="160" alt="glass1" />
-      </button>
-    );
-  }
-
   render() {
-    console.log(this.props);
     const cls = `${styles.form} ${(this.props.showAddOrder ? styles.appear : '')}`;
+
+    const selectGlasses = () => {
+      this.setState({ selectedGlasses: [1, 2, 3, 4] });
+    };
+
+    const sendDates = () => {
+      const payload = {
+        glasses: [1, 2, 3, 4],
+        date1: 1,
+        date2: 2,
+      };
+
+      this.props.checkOrder(payload);
+    };
 
     return (
       <div className={cls}>
         <div className={styles['form-content']}>
-          <h2 className={styles['form-title']}><FormattedMessage id="createNewOrder" /></h2>
+          <h2 className={styles['form-title']}>
+            <FormattedMessage id="createNewOrder" />
+          </h2>
           <label>Select Glasses</label>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-            {this.props.glassTypes && this.props.glassTypes.map(this.renderGlassType)}
-          </div>
+          <button onClick={selectGlasses}>Select Glasses</button>
           <label>{this.props.intl.messages.deliveryDate}</label>
           <input type="date" className={styles['form-field']} ref="deliveryDate" />
           <label>{this.props.intl.messages.pickupDate}</label>
           <input type="date" className={styles['form-field']} ref="pickupDate" />
+          <button onClick={sendDates}>Send Dates</button>
           <label>Availability</label>
-          <p><small>The following amounts of seleted glasses are available:</small></p>
-          <div className="card text-primary" style={{ padding: '1rem 1rem 0.3rem 1rem', marginBottom: '1rem' }}>
-          </div>
-          <div className="row mx-0 px-0">
-            <div className="col-md-12 mx-0 px-0">
-              <label>Select the amounts you would like to hire:</label>
-            </div>
-          </div>
-          <label>Customer Name</label>
-          <input className={styles['form-field']} ref="customerName" />
-          <label>Address</label>
-          <input className={styles['form-field']} ref="address" />
-          <label>{this.props.intl.messages.useDays}</label>
-          <input type="number" className={styles['form-field']} ref="invoiceUseDays" />
-          <label>{this.props.intl.messages.additionalComments}</label>
-          <textarea placeholder={this.props.intl.messages.comments} className={styles['form-field']} ref="comments" />
-          <a className={styles['order-submit-button']} href="#" onClick={this.addOrder}><FormattedMessage id="submit" /></a>
         </div>
-        <div className="card p-3" style={{ position: 'fixed', top: '250px', background: 'light-grey', height: '100px', width: '130px' }}>Discount: {Math.floor(Math.random() * 10)}%</div>
       </div>
     );
   }
 }
 
 OrderCreateWidget.propTypes = {
-  addOrder: PropTypes-.func.isRequired,
+  addOrder: PropTypes.func.isRequired,
+  checkOrder: PropTypes.func.isRequired,
   showAddOrder: PropTypes.bool.isRequired,
   intl: intlShape.isRequired,
   glassTypes: PropTypes.array.isRequired,

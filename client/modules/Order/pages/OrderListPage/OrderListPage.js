@@ -6,7 +6,7 @@ import OrderList from '../../components/OrderList';
 import OrderCreateWidget from '../../components/OrderCreateWidget/OrderCreateWidget';
 
 // Import Actions
-import { addOrderRequest, fetchOrders, deleteOrderRequest } from '../../OrderActions';
+import { addOrderRequest, fetchOrders, deleteOrderRequest, checkAvailability } from '../../OrderActions';
 import { fetchGlassTypes } from '../../../Glassware/GlasswareActions';
 import { toggleAddOrder } from '../../../App/AppActions';
 
@@ -32,10 +32,14 @@ class OrderListPage extends Component {
     this.props.dispatch(addOrderRequest({ name, title, content }));
   };
 
+  handleCheckOrder = (payload) => {
+    this.props.dispatch(checkAvailability(payload));
+  };
+
   render() {
     return (
       <div>
-        <OrderCreateWidget addOrder={this.handleAddOrder} showAddOrder={this.props.showAddOrder} glassTypes={this.props.glassTypes} />
+        <OrderCreateWidget checkOrder={this.handleCheckOrder} addOrder={this.handleAddOrder} showAddOrder={this.props.showAddOrder} glassTypes={this.props.glassTypes} />
         <OrderList handleDeleteOrder={this.handleDeleteOrder} orders={this.props.orders} />
       </div>
     );

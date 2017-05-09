@@ -14,4 +14,7 @@ router.route('/orders').post(OrderController.addOrder);
 // Delete an order by cuid
 router.route('/orders/:cuid').delete(OrderController.deleteOrder);
 
+// Check availability of an order by glasses requested and dates
+router.route('/orders/availability').put(OrderController.checkAvailability);
+
 export default router;
